@@ -80,12 +80,6 @@ class semillaMentaTest: DescribeSpec({
 })
 
 
-
-
-
-
-
-
 class semillaSojaTest: DescribeSpec({
 
 /*
@@ -125,19 +119,64 @@ al sol de 7 horas, no daría semillas y ocuparía 0,3 m2.
 
     }
 
-
-
-
-
 })
 
 
-//si tenemos una quinoa que ocupa 0.2 m2 y su semilla de origen es de 2010, se trata de una planta que da semillas.
-//si tenemos una planta que ocupa 0.9 m2 pero cuya semilla de origen es de 2006, también da semillas.
+
 class SemillaQuinoaTest: DescribeSpec ({
     describe("Creación de la planta de quinoa") {
-        val quinoa1 = Quinoa(0.2, 2010)
-        val quinoa2 = Quinoa(0.9, 2006)
+        val quinoa1 = Quinoa(1.5, 2010)
+        val quinoa2 = Quinoa(0.8, 2006)
+
+        it("Se comprueban los atributos altura y año") {
+            quinoa1.altura.shouldBe(1.5)
+            quinoa2.altura.shouldBe(0.8)
+            quinoa1.anioSemilla.shouldBe(2010)
+            quinoa2.anioSemilla.shouldBe(2006)
+        }
+
+        it("Se comprueba si las quinoas dan semillas") {
+            quinoa1.daSemillas().shouldBeTrue()
+            quinoa2.daSemillas().shouldBeTrue()
+        }
+
+        it("Se comprueba si las quinoas son fuertes") {
+            quinoa1.esFuerte().shouldBeTrue()
+            quinoa2.esFuerte().shouldBeFalse()
+        }
+
+        it("Se comprueban los espacios") {
+            quinoa1.espacio().shouldBe(0.2)
+            quinoa2.espacio().shouldBe(0.9)
+        }
+    }
+})
+
+//La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía una planta de menta de las mismas características.
+class SemillaPeperinaTest: DescribeSpec ({
+    val peperina1 = Peperina(1.2, 2008)
+    val peperina2 = Peperina(0.7, 2004)
+
+    it("Se comprueban los atributos altura y año") {
+        peperina1.altura.shouldBe(1.2)
+        peperina2.altura.shouldBe(0.7)
+        peperina1.anioSemilla.shouldBe(2008)
+        peperina2.anioSemilla.shouldBe(2004)
+    }
+
+    it("Se comprueba si las quinoas dan semillas") {
+        peperina1.daSemillas().shouldBeTrue()
+        peperina2.daSemillas().shouldBeTrue()
+    }
+
+    it("Se comprueba si las quinoas son fuertes") {
+        peperina1.esFuerte().shouldBeFalse()
+        peperina2.esFuerte().shouldBeFalse()
+    }
+
+    it("Se comprueban los espacios") {
+        peperina1.espacio().shouldBe(4.4)
+        peperina2.espacio().shouldBe(3.4)
     }
 })
 
