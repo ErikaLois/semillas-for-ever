@@ -71,23 +71,13 @@ private operator fun Boolean.compareTo(i: Int): Int {
 }
 
 
-/*
-Agregar al modelo la soja transgénica y la peperina, que son similares a la soja y a la menta respectivamente, pero con algunas diferencias.
-
-La soja transgénica nunca da nuevas semillas, porque las empresas que las comercializan las someten adrede a un proceso de esterilización (que les asegura no perder nunca a su clientes).
-Ojo: la consulta siempre tiene que dar falso, incluso si se cumple la condición general.
-
-La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía una planta de menta de las mismas características.
- */
-
-
 class  SojaTransgenica: Soja(){
 
-    override fun daSemillas() = false
+    override fun daSemillas() = false //Esta función siempre debe dar falso.
 }
 
 
 class Peperina: Menta(){
 
-    override fun espacio() = super.espacio() * 2
+    override fun espacio() = super.espacio() * 2 //Es del doble de espacio que ocuparía una planta de Menta.
 }
