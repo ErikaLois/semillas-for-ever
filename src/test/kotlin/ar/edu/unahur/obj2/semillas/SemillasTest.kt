@@ -82,27 +82,12 @@ class semillaMentaTest: DescribeSpec({
 
 class semillaSojaTest: DescribeSpec({
 
-/*
-La tolerancia al sol depende de su altura:
-
-menor a 0,5 metros: 6 horas;
-entre 0,5 y 1 metro: 7 horas;
-más de 1 metro: 9 horas;
-La condición alternativa para que de semillas es su propia semilla sea de obtención reciente
- (posterior al 2007) y además su altura sea de más de 1 metro. El espacio que ocupa es la mitad de su altura.
-
-Por ejemplo, si tuviéramos una soja de 0,6 metros y de semilla de 2009, la planta tendría una tolerancia
-al sol de 7 horas, no daría semillas y ocuparía 0,3 m2.
-*/
-
-
-
     describe("Creación planta soja") {
         val soja = Soja(0.6, 2009)
 
         it("probamos los atributos altura  y anioSemilla") {
             soja.altura.shouldBe(1.0)
-            soja.anioSemilla.shouldBe(2021)
+            soja.anioSemilla.shouldBe(2009)
         }
 
         it("verificar si da semillas") {
@@ -181,6 +166,50 @@ class SemillaPeperinaTest: DescribeSpec ({
 })
 
 
+
+
+
+
+
+
+
+/*Agregar al modelo la soja transgénica y la peperina, que son similares a la soja y a la menta respectivamente, pero con algunas diferencias.
+
+La soja transgénica nunca da nuevas semillas, porque las empresas que las comercializan las someten adrede a un proceso
+de esterilización (que les asegura no perder nunca a su clientes). Ojo: la consulta siempre tiene que dar falso, incluso
+ si se cumple la condición general.
+
+La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía
+ una planta de menta de las mismas características.*/
+
+
+
+class SojaTransgenicaTest: DescribeSpec({
+    describe( "creacion de soja transgenica"){
+        val sojaTrans1= SojaTransgenica(0.5, 2009)
+        it("probamos los atributos altura  y anioSemilla") {
+            sojaTrans1.altura.shouldBe(0.5)
+            sojaTrans1.anioSemilla.shouldBe(2009)
+        }
+
+        it("verificar si da semillas") {
+            sojaTrans1.daSemillas().shouldBeFalse()
+        }
+
+        it("es fuerte") {
+            sojaTrans1.esFuerte().shouldBeFalse()
+        }
+
+        it("espacio") {
+            sojaTrans1.espacio().shouldBe(0.3)
+        }
+
+}
+
+
+
+
+})
 
 
 

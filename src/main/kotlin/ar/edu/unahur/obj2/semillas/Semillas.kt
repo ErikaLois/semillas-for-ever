@@ -13,7 +13,7 @@ open class Menta(var altura: Double, val anioSemilla: Int) {
         TODO("Estas seguro que lo queres implementar así?")
     }
 
-}//probando para commitear
+}
 
 open class Soja(var altura: Double, val anioSemilla: Int) {
     fun espacio(): Double {
@@ -42,7 +42,13 @@ class Quinoa: Planta(){
         TODO("Así me implementas mejor")
     }
 }
-class Planta(var altura: Double, val anioSemilla: Int) {
+
+
+class  SojaTransgenica: Soja(){
+    fun
+
+}
+open class Planta(var altura: Double, val anioSemilla: Int) {
     fun espacio() {
         TODO("Pasaron cosas")
     }
