@@ -1,60 +1,82 @@
 package ar.edu.unahur.obj2.semillas
 
-open class Menta(var altura: Double, val anioSemilla: Int) {
-    fun espacio(): Double {
-        TODO("Te la debo, amigue...")
+
+abstract class Plantas( val anioSemilla: Int , var altura: Double){
+    fun horasDeSol()=7
+
+    fun esFuerte()= horasDeSol() >= 9
+
+
+    open fun daSemillas()= esFuerte()
+
+    abstract fun horasDeSol(altura: Int): Int
+}
+
+open class Menta( anioSemilla:Int, altura:Double):Plantas(anioSemilla, altura) {
+    fun espacio()= altura + 1
+    override fun horasDeSol(altura: Int): Int {
+        TODO("Not yet implemented")
     }
 
-    fun daSemillas(): Boolean {
-        TODO("Colgue, che...")
-    }
-
-    fun esFuerte(): Boolean {
-        TODO("Estas seguro que lo queres implementar así?")
-    }
+    override fun daSemillas()= altura >0.4
 
 }
 
-open class Soja(var altura: Double, val anioSemilla: Int) {
-    fun espacio(): Double {
-        TODO("Lee un poco más el enunciado...")
+open class Soja(anioSemilla:Int, altura:Double): Plantas(anioSemilla, altura) {
+    override fun horasDeSol(altura: Int): Int{
+        var horas=0
+        if(altura < 0.5 ){
+            horas= 6
+        }
+        else if(  0.5 > altura <1.0 ){
+            horas =8
+        }
+        else {
+            horas= 12
+        }
+        return horas
     }
 
-    fun daSemillas(): Boolean {
-        TODO("Dalee")
-    }
+    override fun daSemillas()= anioSemilla >= 2007 and 0.75.toInt() > altura < 0.9
 
-    fun esFuerte(): Boolean {
-        TODO("Así me implementas mejor")
-    }
 }
 
-class Quinoa: Planta(){
-    fun espacio(): Double {
-        TODO("Lee un poco más el enunciado...")
-    }
+private operator fun Boolean.compareTo(d: Double) {
 
-    fun daSemillas(): Boolean {
-        TODO("Dalee")
-    }
-
-    fun esFuerte(): Boolean {
-        TODO("Así me implementas mejor")
-    }
 }
 
+private infix fun Double.and(altura: Int): Byte {
 
+}
+
+class Quinoa(anioSemilla:Int, altura:Double, val espacio: Int): Plantas(anioSemilla, altura){
+    override fun horasDeSol(altura: Int): Int{
+        var horas=0
+        if(espacio < 0.3 ){
+            horas= 10
+        }
+        else {
+            horas =7
+        }
+        return horas
+    }
+
+    override fun daSemillas()= 2001 >= anioSemilla <= 2008
+
+
+}
+
+private operator fun Boolean.compareTo(i: Int): Int {
+
+}
+
+/*
 class  SojaTransgenica: Soja(){
-    fun
+
 
 }
-open class Planta(var altura: Double, val anioSemilla: Int) {
-    fun espacio() {
-        TODO("Pasaron cosas")
-    }
 
-}
 
 class Peperina: Menta(){
 
-}
+}*/
