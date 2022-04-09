@@ -29,6 +29,9 @@ class Soja(var altura: Double, val anioSemilla: Int) {
     }
 }
 
+class Quinoa(var altura: Double, val anioSemilla: Int) {
+
+}
 class Planta(var altura: Double, val anioSemilla: Int) {
     fun espacio() {
         TODO("Pasaron cosas")
