@@ -12,7 +12,7 @@ abstract class Plantas( val anioSemilla: Int , var altura: Double){
     abstract fun horasDeSol(altura: Int): Int
 }
 
-open class Menta( anioSemilla:Int, altura:Double):Plantas(anioSemilla, altura) {
+open class Menta( anioSemilla:Int, altura:Double): Plantas(anioSemilla, altura) {
     open fun espacio()= altura + 1
     override fun horasDeSol(altura: Int): Int {
         TODO("Not yet implemented")
