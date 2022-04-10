@@ -5,47 +5,6 @@ import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 
-/*
-class SemillasTest : DescribeSpec ({
-    // hay una clase Planta que tiene por atributos
-    // anioSemilla, altura
-    describe("Creación de las plantas") {
-        val menta = Menta(1.0, 2021)
-        val mentita = Menta(0.3, 2021)
-        val soja = Soja(0.6, 2009)
-
-        it("probamos los atributos altura  y anioSemilla") {
-            menta.altura.shouldBe(1.0)
-            menta.anioSemilla.shouldBe(2021)
-        }
-
-        it("verificar si da semillas") {
-            menta.daSemillas().shouldBeTrue()
-            mentita.daSemillas().shouldBeFalse()
-            soja.daSemillas().shouldBeFalse()
-        }
-
-        it("es fuerte") {
-            menta.esFuerte().shouldBeFalse()
-            soja.esFuerte().shouldBeFalse()
-        }
-
-        it("espacio") {
-            menta.espacio().shouldBe(2.0)
-            mentita.espacio().shouldBe(1.3)
-            soja.espacio().shouldBe(0.3)
-        }
-
-        it("verifico la suma de varias") {
-            val superficie = mutableListOf(
-                soja.espacio(),
-                menta.espacio(),
-                mentita.espacio()
-            ).sum()
-            Math.ceil(superficie).shouldBe(4)
-        }
-    }
-})*/
 
 class semillaMentaTest: DescribeSpec({
     describe("Creación de mentas") {
@@ -137,7 +96,6 @@ class SemillaQuinoaTest: DescribeSpec ({
     }
 })
 
-//La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía una planta de menta de las mismas características.
 class SemillaPeperinaTest: DescribeSpec ({
     val peperina1 = Peperina(2008, 1.2)
     val peperina2 = Peperina(2004, 0.7)
@@ -165,25 +123,6 @@ class SemillaPeperinaTest: DescribeSpec ({
     }
 })
 
-
-
-
-
-
-
-
-
-/*Agregar al modelo la soja transgénica y la peperina, que son similares a la soja y a la menta respectivamente, pero con algunas diferencias.
-
-La soja transgénica nunca da nuevas semillas, porque las empresas que las comercializan las someten adrede a un proceso
-de esterilización (que les asegura no perder nunca a su clientes). Ojo: la consulta siempre tiene que dar falso, incluso
- si se cumple la condición general.
-
-La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía
- una planta de menta de las mismas características.*/
-
-
-
 class SojaTransgenicaTest: DescribeSpec({
     describe( "creacion de soja transgenica"){
         val sojaTrans1= SojaTransgenica(2009, 0.5)
@@ -206,9 +145,6 @@ class SojaTransgenicaTest: DescribeSpec({
         }
 
 }
-
-
-
 
 })
 
