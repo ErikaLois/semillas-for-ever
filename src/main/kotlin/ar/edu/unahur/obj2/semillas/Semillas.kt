@@ -29,7 +29,7 @@ open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) 
         return if(altura < 0.5 ){
             6
         }
-        else if(  altura > 0.5 && altura < 1.0 ){
+        else if(altura in 0.5..1.0){
             8
         }
         else {
@@ -46,11 +46,13 @@ open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) 
 class Quinoa(anioSemilla: Int, altura: Double, val espacio: Double): Plantas(anioSemilla, altura){
 
     override fun horasDeSol(): Int{
-        return if(this.espacio() < 0.3 ) { 10 }
-        else { 7 }
+
+        return if (this.espacio() < 0.3 ) { 10 }
+
+        else { super.horasDeSol() }
     }
 
-    override fun daSemillas()= 2001 >= anioSemilla && anioSemilla <= 2008
+    override fun daSemillas()= super.daSemillas() or(anioSemilla in 2001..2008)
 
     override fun espacio() = espacio
 }

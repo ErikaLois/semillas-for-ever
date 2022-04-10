@@ -202,7 +202,7 @@ class SojaTransgenicaTest: DescribeSpec({
         }
 
         it("espacio") {
-            sojaTrans1.espacio().shouldBe(0.3)
+            sojaTrans1.espacio().shouldBe(0.25)
         }
 
 }
