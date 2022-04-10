@@ -86,7 +86,7 @@ class semillaSojaTest: DescribeSpec({
         val soja = Soja(2009, 0.6)
 
         it("probamos los atributos altura  y anioSemilla") {
-            soja.altura.shouldBe(1.0)
+            soja.altura.shouldBe(0.6)
             soja.anioSemilla.shouldBe(2009)
         }
 

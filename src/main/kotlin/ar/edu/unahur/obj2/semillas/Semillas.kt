@@ -2,15 +2,16 @@ package ar.edu.unahur.obj2.semillas
 
 
 abstract class Plantas( val anioSemilla: Int , var altura: Double){
-    open fun horasDeSol() = 7
 
-    fun esFuerte()= horasDeSol() >= 9
+    open fun horasDeSol() = 7 //En principio, las plantas toleran 7 horas de sol por día, esto cambia para algunos tipos de planta
+
+    fun esFuerte()= this.horasDeSol() > 9
 
     abstract fun espacio(): Double
 
-    open fun daSemillas()= esFuerte()
+    open fun daSemillas()= this.esFuerte()
 
-    //abstract fun horasDeSol(altura: Int): Int
+    // abstract fun horasDeSolQueTolera(): Int
 }
 
 open class Menta(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura){
@@ -28,7 +29,7 @@ open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) 
         return if(altura < 0.5 ){
             6
         }
-        else if(  0.5 > altura && altura < 1.0 ){
+        else if(  altura > 0.5 && altura < 1.0 ){
             8
         }
         else {
@@ -38,7 +39,7 @@ open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) 
 
     override fun espacio() = altura / 2
 
-    override fun daSemillas()= super.daSemillas() and(anioSemilla >= 2007 && 0.75.toInt() > altura  && altura < 0.9)
+    override fun daSemillas()= super.daSemillas() or(anioSemilla >= 2007 && 0.75 < altura  && altura < 0.9)
 
 }
 

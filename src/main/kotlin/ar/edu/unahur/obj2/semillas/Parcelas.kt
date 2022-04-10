@@ -5,7 +5,7 @@ class Parcela(val ancho: Double, val largo: Double, val horasDeSol: Int, var pla
     fun superficie() = ancho * largo
 
     fun maximoDePlantas(): Int {
-
+    //Máximo de plantas que tolera la parcela
         return if (ancho > largo) {
             (this.superficie() / 5).toInt()
         } else {
@@ -13,10 +13,11 @@ class Parcela(val ancho: Double, val largo: Double, val horasDeSol: Int, var pla
         }
     }
 
-    fun tieneComplicaciones() = plantas.any { it.horasDeSol() < horasDeSol }
+    fun tieneComplicaciones() = plantas.any { it.horasDeSol() < horasDeSol } //Es así si alguna de sus plantas tolera menos sol del que recibe la parcela.
 
     fun plantar(planta: Plantas) {
-        if (plantas.size == this.maximoDePlantas() || horasDeSol > planta.horasDeSol() + 2 ) {
+        //Primero chequea que haya lugar y que las horas de sol que recibe la parcela es válida para la planta. Si esto no ocurre, lanza una excepción.
+        if (plantas.size == this.maximoDePlantas() || horasDeSol >= planta.horasDeSol() + 2 ) {
             throw Exception("No se puede plantar la planta.")
         }
         else {plantas.add(planta)}
