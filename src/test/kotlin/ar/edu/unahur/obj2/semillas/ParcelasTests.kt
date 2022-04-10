@@ -11,6 +11,7 @@ class ParcelasTests: DescribeSpec ({
     describe("Se crean parcelas") {
         val menta1 = Menta(2000,1.0)
         val menta2 = Menta(2015, 0.3)
+        val soja1 = Soja(2009, 1.5)
         val parcela1 = Parcela(20.0,  1.0, 10, mutableListOf(menta1, menta2, menta1))
 
         //val parcela2 = Parcela(ancho: 15.0, largo: 2.0, horasDeSol: 7, plantas: [menta1, menta2, menta2])
@@ -35,8 +36,8 @@ class ParcelasTests: DescribeSpec ({
         }
 
         it("Plantar una nueva planta y corrobar si funcionó") {
-            parcela1.plantar(menta1)
-            parcela1.plantas.shouldContainExactly(menta1, menta2, menta1, menta1)
+            parcela1.plantar(soja1)
+            parcela1.plantas.shouldContainExactly(menta1, menta2, menta1, soja1)
         }
     }
 
