@@ -2,16 +2,59 @@ package ar.edu.unahur.obj2.semillas
 
 
 abstract class Plantas( val anioSemilla: Int , var altura: Double){
-    fun horasDeSol()=7
+    open fun horasDeSol() = 7
 
     fun esFuerte()= horasDeSol() >= 9
 
+    abstract fun espacio(): Double
 
     open fun daSemillas()= esFuerte()
 
-    abstract fun horasDeSol(altura: Int): Int
+    //abstract fun horasDeSol(altura: Int): Int
 }
 
+open class Menta(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura){
+
+    override fun espacio()= altura + 1
+
+    override fun daSemillas()= altura > 0.4
+
+}
+
+open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) {
+
+    override fun horasDeSol(): Int{
+
+        return if(altura < 0.5 ){
+            6
+        }
+        else if(  0.5 > altura && altura < 1.0 ){
+            8
+        }
+        else {
+            12
+        }
+    }
+
+    override fun espacio() = altura / 2
+
+    override fun daSemillas()= super.daSemillas() and(anioSemilla >= 2007 && 0.75.toInt() > altura  && altura < 0.9)
+
+}
+
+class Quinoa(anioSemilla: Int, altura: Double, val espacio: Double): Plantas(anioSemilla, altura){
+
+    override fun horasDeSol(): Int{
+        return if(this.espacio() < 0.3 ) { 10 }
+        else { 7 }
+    }
+
+    override fun daSemillas()= 2001 >= anioSemilla && anioSemilla <= 2008
+
+    override fun espacio() = espacio
+}
+
+/*
 open class Menta( anioSemilla:Int, altura:Double): Plantas(anioSemilla, altura) {
     open fun espacio()= altura + 1
     override fun horasDeSol(altura: Int): Int {
@@ -69,15 +112,15 @@ class Quinoa(anioSemilla:Int, altura:Double, val espacio: Int): Plantas(anioSemi
 private operator fun Boolean.compareTo(i: Int): Int {
 
 }
+*/
 
-
-class  SojaTransgenica: Soja(){
+class  SojaTransgenica(anioSemilla: Int, altura: Double): Soja(anioSemilla, altura){
 
     override fun daSemillas() = false //Esta función siempre debe dar falso.
 }
 
 
-class Peperina: Menta(){
+class Peperina(anioSemilla: Int, altura: Double): Menta(anioSemilla, altura){
 
     override fun espacio() = super.espacio() * 2 //Es del doble de espacio que ocuparía una planta de Menta.
 }

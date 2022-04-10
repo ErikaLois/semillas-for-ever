@@ -51,8 +51,8 @@ class semillaMentaTest: DescribeSpec({
     describe("Creación de mentas") {
         //una menta de 1 metro, debería dar semillas y ocupar un espacio de 2 metros cuadrados.
         //una menta de solo 0.3 metros, no debería dar semillas y ocuparía 1.3 metros cuadrados de espacio.
-        val menta1 = Menta(1.0, 2000)
-        val menta2 = Menta(0.3, 2015)
+        val menta1 = Menta(2000, 1.0)
+        val menta2 = Menta(2015, 0.3)
 
         it("Se comprueban los atributos altura y año") {
             menta1.altura.shouldBe(1.0)
@@ -83,7 +83,7 @@ class semillaMentaTest: DescribeSpec({
 class semillaSojaTest: DescribeSpec({
 
     describe("Creación planta soja") {
-        val soja = Soja(0.6, 2009)
+        val soja = Soja(2009, 0.6)
 
         it("probamos los atributos altura  y anioSemilla") {
             soja.altura.shouldBe(1.0)
@@ -110,8 +110,8 @@ class semillaSojaTest: DescribeSpec({
 
 class SemillaQuinoaTest: DescribeSpec ({
     describe("Creación de la planta de quinoa") {
-        val quinoa1 = Quinoa(1.5, 2010)
-        val quinoa2 = Quinoa(0.8, 2006)
+        val quinoa1 = Quinoa(2010, 1.5, 0.2)
+        val quinoa2 = Quinoa(2006, 0.8, 0.9)
 
         it("Se comprueban los atributos altura y año") {
             quinoa1.altura.shouldBe(1.5)
@@ -139,8 +139,8 @@ class SemillaQuinoaTest: DescribeSpec ({
 
 //La peperina se esparce más rápido que la menta y por eso el espacio que ocupa es el doble del que ocuparía una planta de menta de las mismas características.
 class SemillaPeperinaTest: DescribeSpec ({
-    val peperina1 = Peperina(1.2, 2008)
-    val peperina2 = Peperina(0.7, 2004)
+    val peperina1 = Peperina(2008, 1.2)
+    val peperina2 = Peperina(2004, 0.7)
 
     it("Se comprueban los atributos altura y año") {
         peperina1.altura.shouldBe(1.2)
@@ -186,7 +186,8 @@ La peperina se esparce más rápido que la menta y por eso el espacio que ocupa 
 
 class SojaTransgenicaTest: DescribeSpec({
     describe( "creacion de soja transgenica"){
-        val sojaTrans1= SojaTransgenica(0.5, 2009)
+        val sojaTrans1= SojaTransgenica(2009, 0.5)
+
         it("probamos los atributos altura  y anioSemilla") {
             sojaTrans1.altura.shouldBe(0.5)
             sojaTrans1.anioSemilla.shouldBe(2009)
