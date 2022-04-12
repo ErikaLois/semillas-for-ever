@@ -8,8 +8,7 @@ import io.kotest.matchers.shouldBe
 
 class semillaMentaTest: DescribeSpec({
     describe("Creación de mentas") {
-        //una menta de 1 metro, debería dar semillas y ocupar un espacio de 2 metros cuadrados.
-        //una menta de solo 0.3 metros, no debería dar semillas y ocuparía 1.3 metros cuadrados de espacio.
+        
         val menta1 = Menta(2000, 1.0)
         val menta2 = Menta(2015, 0.3)
 
