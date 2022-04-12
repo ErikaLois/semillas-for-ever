@@ -11,7 +11,6 @@ abstract class Plantas( val anioSemilla: Int , var altura: Double){
 
     open fun daSemillas()= this.esFuerte()
 
-    // abstract fun horasDeSolQueTolera(): Int
 }
 
 open class Menta(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura){
