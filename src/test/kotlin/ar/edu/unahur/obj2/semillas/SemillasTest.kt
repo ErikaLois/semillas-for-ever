@@ -98,6 +98,8 @@ class SemillaQuinoaTest: DescribeSpec ({
 class SemillaPeperinaTest: DescribeSpec ({
     val peperina1 = Peperina(2008, 1.2)
     val peperina2 = Peperina(2004, 0.7)
+    val peperina3 = Peperina(2000, 1.0)
+    val peperina4 = Peperina(2015, 0.3)
 
     it("Se comprueban los atributos altura y año") {
         peperina1.altura.shouldBe(1.2)
@@ -109,16 +111,22 @@ class SemillaPeperinaTest: DescribeSpec ({
     it("Se comprueba si las quinoas dan semillas") {
         peperina1.daSemillas().shouldBeTrue()
         peperina2.daSemillas().shouldBeTrue()
+        peperina3.daSemillas().shouldBeTrue()
+        peperina4.daSemillas().shouldBeFalse()
     }
 
     it("Se comprueba si las quinoas son fuertes") {
         peperina1.esFuerte().shouldBeFalse()
         peperina2.esFuerte().shouldBeFalse()
+        peperina3.esFuerte().shouldBeFalse()
+        peperina4.esFuerte().shouldBeFalse()
     }
 
     it("Se comprueban los espacios") {
         peperina1.espacio().shouldBe(4.4)
         peperina2.espacio().shouldBe(3.4)
+        peperina3.espacio().shouldBe(4.0)
+        peperina4.espacio().shouldBe(2.6)
     }
 })
 
