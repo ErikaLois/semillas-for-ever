@@ -17,9 +17,12 @@ class ParcelasTests: DescribeSpec ({
         val menta1 = Menta(2000,1.0)
         val menta2 = Menta(2015, 0.3)
         val soja1 = Soja(2009, 1.5)
+        val quinoa1 = Quinoa(2010, 1.5, 0.2)
+        val peperina3 = Peperina(2000, 1.0)
+        val sojaTrans1= SojaTransgenica(2009, 0.5)
         val parcela1 = Parcela(20.0,  1.0, 10, mutableListOf(menta1, menta2, menta1))
         val parcela2 = Parcela(1.0, 20.0, 6, mutableListOf(menta2, menta2, soja1))
-
+        val parcela3 = Parcela(3.00, 2.00, 12, mutableListOf(menta1))
 
         it("Se prueban los atributos ancho, largo, horasDeSol y plantas") {
             parcela1.ancho.shouldBe(20.0)
@@ -57,6 +60,13 @@ class ParcelasTests: DescribeSpec ({
         it("Plantar una nueva plata y que arroje un error") {
             shouldThrowAny { parcela1.plantar(menta1) }
         }
+
+        it("Parcelas ideales para cada planta") {
+            menta1.parcelaIdeal(parcela1).shouldBeTrue()
+            peperina3.parcelaIdeal(parcela1).shouldBeTrue()
+            quinoa1.parcelaIdeal(parcela1).shouldBeTrue()
+            soja1.parcelaIdeal(parcela3).shouldBeTrue()
+            sojaTrans1.parcelaIdeal(parcela3).shouldBeTrue()
     }
 
 })
