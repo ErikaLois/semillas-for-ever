@@ -61,7 +61,7 @@ class Quinoa(anioSemilla: Int, altura: Double, val espacio: Double): Plantas(ani
 
     override fun espacio() = espacio
 
-    override fun parcelaIdeal(parcela: Parcela) = parcela.plantas.all { altura <= 1.5 }
+    override fun parcelaIdeal(parcela: Parcela) = parcela.plantas.all { it.altura <= 1.5 }
 }
 
 class  SojaTransgenica(anioSemilla: Int, altura: Double): Soja(anioSemilla, altura){
