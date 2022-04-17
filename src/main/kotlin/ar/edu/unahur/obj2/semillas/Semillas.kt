@@ -21,6 +21,8 @@ open class Menta(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura)
 
     override fun daSemillas()= altura > 0.4
 
+    override fun parcelaIdeal(parcela: Parcela) = parcela.superficie() > 6
+
 }
 
 open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) {
@@ -42,6 +44,8 @@ open class Soja(anioSemilla: Int, altura: Double): Plantas(anioSemilla, altura) 
 
     override fun daSemillas()= super.daSemillas() or(anioSemilla >= 2007 && 0.75 < altura  && altura < 0.9)
 
+    override fun parcelaIdeal(parcela: Parcela) = parcela.horasDeSol == this.horasDeSol()
+
 }
 
 class Quinoa(anioSemilla: Int, altura: Double, val espacio: Double): Plantas(anioSemilla, altura){
@@ -56,11 +60,15 @@ class Quinoa(anioSemilla: Int, altura: Double, val espacio: Double): Plantas(ani
     override fun daSemillas()= super.daSemillas() or(anioSemilla in 2001..2008)
 
     override fun espacio() = espacio
+
+    override fun parcelaIdeal(parcela: Parcela) = parcela.plantas.all { altura <= 1.5 }
 }
 
 class  SojaTransgenica(anioSemilla: Int, altura: Double): Soja(anioSemilla, altura){
 
     override fun daSemillas() = false //Esta función siempre debe dar falso.
+
+    override fun parcelaIdeal(parcela: Parcela) = parcela.maximoDePlantas() == 1
 }
 
 

@@ -67,6 +67,8 @@ class ParcelasTests: DescribeSpec ({
             quinoa1.parcelaIdeal(parcela1).shouldBeTrue()
             soja1.parcelaIdeal(parcela3).shouldBeTrue()
             sojaTrans1.parcelaIdeal(parcela3).shouldBeTrue()
+        }
+
     }
 
 })
