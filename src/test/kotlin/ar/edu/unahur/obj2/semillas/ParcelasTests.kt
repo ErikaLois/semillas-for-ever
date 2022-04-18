@@ -21,9 +21,12 @@ class ParcelasTests: DescribeSpec ({
         val quinoa1 = Quinoa(2010, 1.5, 0.2)
         val peperina3 = Peperina(2000, 1.0)
         val sojaTrans1= SojaTransgenica(2009, 0.5)
-        val parcela1 = Parcela(20.0,  1.0, 10, mutableListOf(menta1, menta2, menta1))
+        val parcela1 = ParcelasEcologicas(20.0,  1.0, 10, mutableListOf(menta1, menta2, menta1))
         val parcela2 = Parcela(1.0, 20.0, 6, mutableListOf(menta2, menta2, soja1))
-        val parcela3 = Parcela(3.00, 2.00, 12, mutableListOf(soja2))
+        val parcela3 = ParcelasEcologicas(3.00, 2.00, 12, mutableListOf(soja2))
+        val parcela4 = ParcelasEcologicas(20.0, 1.0, 8,mutableListOf(menta1,peperina3, quinoa1, soja1))
+        val parcela5 = ParcelasEcologicas(2.5, 2.0, 8,mutableListOf(sojaTrans1))
+        val parcela6 = ParcelasEcologicas(10.0, 5.0, 7,mutableListOf(menta2, menta2, soja1))
 
         it("Se prueban los atributos ancho, largo, horasDeSol y plantas") {
             parcela1.ancho.shouldBe(20.0)
@@ -44,11 +47,14 @@ class ParcelasTests: DescribeSpec ({
         it("La parcela1 tolera una cantidad máxima de 4 plantas") {
             parcela1.maximoDePlantas().shouldBe(4)
             parcela2.maximoDePlantas().shouldBe(26)
+            parcela5.maximoDePlantas().shouldBe(1)
         }
 
         it("La parcela1 tiene complicaciones") {
             parcela1.tieneComplicaciones().shouldBeTrue()
             parcela2.tieneComplicaciones().shouldBeFalse()
+            parcela3.tieneComplicaciones().shouldBeFalse()
+            parcela4.tieneComplicaciones().shouldBeTrue()
         }
 
         it("Plantar una nueva planta sin que arroje error") {
@@ -77,6 +83,27 @@ class ParcelasTests: DescribeSpec ({
             soja1.parcelaIdeal(parcela1).shouldBeFalse()
             sojaTrans1.parcelaIdeal(parcela1).shouldBeFalse()
         }
+
+        it("Parcelas ecológicas que se asocian bien para cada planta"){
+            parcela6.seAsocianBien(menta1).shouldBeTrue()
+            parcela6.seAsocianBien(peperina3).shouldBeTrue()
+            parcela5.seAsocianBien(quinoa1).shouldBeTrue()
+            parcela3.seAsocianBien(soja1).shouldBeTrue()
+            parcela5.seAsocianBien(sojaTrans1).shouldBeTrue()
+        }
+
+        it("Parcelas ecológicas que no se asocian bien para cada planta"){
+            parcela3.seAsocianBien(menta1).shouldBeFalse()
+            parcela3.seAsocianBien(peperina3).shouldBeFalse()
+            parcela3.seAsocianBien(quinoa1).shouldBeFalse()
+            parcela1.seAsocianBien(soja1).shouldBeFalse()
+            parcela1.seAsocianBien(sojaTrans1).shouldBeFalse()
+        }
+
+
+
+
+
     }
 
 })
