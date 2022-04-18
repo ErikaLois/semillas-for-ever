@@ -41,23 +41,43 @@ class semillaMentaTest: DescribeSpec({
 class semillaSojaTest: DescribeSpec({
 
     describe("Creación planta soja") {
-        val soja = Soja(2009, 0.6)
+        val soja1 = Soja(2009, 0.6) // no da semilla
+        val soja2 = Soja(2008,0.78) // da semilla
+        val soja3 = Soja(2005, 0.80) // no da semilla
+        val soja4 = Soja(2010, 1.0)  // no da semillas
+        val soja5 = Soja(2010, 1.5)  // no da semillas
 
-        it("probamos los atributos altura  y anioSemilla") {
-            soja.altura.shouldBe(0.6)
-            soja.anioSemilla.shouldBe(2009)
+        it("Horas de sol"){
+            soja1.horasDeSol().shouldBe(8)
+            soja2.horasDeSol().shouldBe(8)
+            soja3.horasDeSol().shouldBe(8)
+            soja4.horasDeSol().shouldBe(8)
+            soja5.horasDeSol().shouldBe(12)
+
         }
 
         it("verificar si da semillas") {
-            soja.daSemillas().shouldBeFalse()
+            soja1.daSemillas().shouldBeFalse()
+            soja2.daSemillas().shouldBeTrue()
+            soja3.daSemillas().shouldBeFalse()
+            soja4.daSemillas().shouldBeFalse()
         }
 
         it("es fuerte") {
-            soja.esFuerte().shouldBeFalse()
+            soja1.esFuerte().shouldBeFalse()
+            soja2.esFuerte().shouldBeFalse()
+            soja3.esFuerte().shouldBeFalse()
+            soja4.esFuerte().shouldBeFalse()
+            soja5.esFuerte().shouldBeTrue()
+
         }
 
         it("espacio") {
-            soja.espacio().shouldBe(0.3)
+            soja1.espacio().shouldBe(0.3)
+            soja2.espacio().shouldBe(0.39)
+            soja3.espacio().shouldBe(0.4)
+            soja4.espacio().shouldBe(0.5)
+            soja5.espacio().shouldBe(0.75)
         }
 
     }
@@ -133,6 +153,7 @@ class SemillaPeperinaTest: DescribeSpec ({
 class SojaTransgenicaTest: DescribeSpec({
     describe( "creacion de soja transgenica"){
         val sojaTrans1= SojaTransgenica(2009, 0.5)
+        val sojaTrans2 = SojaTransgenica(2008,0.78) // da semilla
 
         it("probamos los atributos altura  y anioSemilla") {
             sojaTrans1.altura.shouldBe(0.5)
@@ -141,6 +162,7 @@ class SojaTransgenicaTest: DescribeSpec({
 
         it("verificar si da semillas") {
             sojaTrans1.daSemillas().shouldBeFalse()
+            sojaTrans2.daSemillas().shouldBeFalse()
         }
 
         it("es fuerte") {
