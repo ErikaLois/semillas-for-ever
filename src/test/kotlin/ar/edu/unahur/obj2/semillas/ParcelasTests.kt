@@ -100,9 +100,21 @@ class ParcelasTests: DescribeSpec ({
             parcela1.seAsocianBien(sojaTrans1).shouldBeFalse()
         }
 
+        it("Parcelas industriales que se asocian bien para algunas plantas"){
+            val parcela7 = ParcelasIndustriales(3.0, 2.0, 7,mutableListOf(soja1, soja2))
+            parcela7.seAsocianBien(quinoa1).shouldBeTrue()
+            parcela7.seAsocianBien(soja1).shouldBeTrue()
+            parcela7.seAsocianBien(soja2).shouldBeTrue()
 
+        }
 
+        it("Parcelas industriales que no se asocian bien para algunas plantas"){
+            val parcela7 = ParcelasIndustriales(3.0, 2.0, 7,mutableListOf(soja1, soja2))
+            parcela7.seAsocianBien(menta1).shouldBeFalse()
+            parcela7.seAsocianBien(peperina3).shouldBeFalse()
+            parcela7.seAsocianBien(sojaTrans1).shouldBeFalse()
 
+        }
 
     }
 

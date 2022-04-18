@@ -34,3 +34,9 @@ class ParcelasEcologicas ( ancho: Double, largo: Double, horasDeSol: Int, planta
     fun seAsocianBien(planta: Plantas)= !this.tieneComplicaciones() && planta.parcelaIdeal(this)
 
 }
+
+class ParcelasIndustriales ( ancho: Double, largo: Double, horasDeSol: Int, plantas: MutableList<Plantas>): Parcela(ancho, largo, horasDeSol,plantas){
+
+    fun seAsocianBien(planta: Plantas)= this.maximoDePlantas()<=2 && planta.esFuerte()
+
+}
