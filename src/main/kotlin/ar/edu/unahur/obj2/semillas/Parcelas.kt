@@ -23,20 +23,22 @@ open class Parcela(val ancho: Double, val largo: Double, val horasDeSol: Int, va
         else {plantas.add(planta)}
     }
 
+    fun cantidadDePlantas() = plantas.size
 
+    open fun seAsocianBien(planta: Plantas) = true //Esto hay que verlo porque está mal
 
-
+    fun bienAsociadas() = plantas.filter { seAsocianBien(it) }.size
 
 }
 
 class ParcelasEcologicas ( ancho: Double, largo: Double, horasDeSol: Int, plantas: MutableList<Plantas>): Parcela(ancho, largo, horasDeSol,plantas){
 
-    fun seAsocianBien(planta: Plantas)= !this.tieneComplicaciones() && planta.parcelaIdeal(this)
+    override fun seAsocianBien(planta: Plantas)= !this.tieneComplicaciones() && planta.parcelaIdeal(this)
 
 }
 
 class ParcelasIndustriales ( ancho: Double, largo: Double, horasDeSol: Int, plantas: MutableList<Plantas>): Parcela(ancho, largo, horasDeSol,plantas){
 
-    fun seAsocianBien(planta: Plantas)= this.maximoDePlantas()<=2 && planta.esFuerte()
+    override fun seAsocianBien(planta: Plantas)= this.maximoDePlantas()<=2 && planta.esFuerte()
 
 }
