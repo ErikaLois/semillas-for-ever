@@ -25,7 +25,7 @@ open class Parcela(val ancho: Double, val largo: Double, val horasDeSol: Int, va
 
     fun cantidadDePlantas() = plantas.size
 
-    open fun seAsocianBien(planta: Plantas) = true //Esto hay que verlo porque está mal
+    open fun seAsocianBien(planta: Plantas) = false //Esta función solo se usa para parcelas ecológicas o industriales.
 
     fun bienAsociadas() = plantas.filter { seAsocianBien(it) }.size
 
